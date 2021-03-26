@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Bingo">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+                <Button
+                    android:id="@+id/btn_finish"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_margin="5sp"
+                    android:onClick="btnFinish"
+                    android:text="Finish"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/btn_finish"
+                    android:layout_margin="5sp"
+                    android:layout_toStartOf="@id/btn_finish"
+                    android:onClick="btnStart"
+                    android:text="Start"
+                    android:textSize="20dp" />
+
+                <Button
+                    android:id="@+id/btn_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@id/btn_finish"
+                    android:layout_margin="5sp"
+                    android:layout_toEndOf="@id/btn_finish"
+                    android:onClick="btnCancel"
+                    android:text="Cancel"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="빙고 횟수 : "/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:text="진행시간"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:columnCount="4"
+        android:padding="10dp">
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_00"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_01"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_02"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_03"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_10"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_11"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_12"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_13"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_20"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_21"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_22"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_23"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_30"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_31"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_32"/>
+
+        <TextView
+            style="@style/bingo_style"
+            android:id="@+id/tv_33"/>
+    </GridLayout>
+</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

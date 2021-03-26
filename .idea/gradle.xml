@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="GradleMigrationSettings" migrationVersion="1" />
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
@@ -11,7 +12,23 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/addarraylist_1" />
+            <option value="$PROJECT_DIR$/app/array_adapter_n_listview" />
+            <option value="$PROJECT_DIR$/app/connectphone" />
+            <option value="$PROJECT_DIR$/app/edittext" />
+            <option value="$PROJECT_DIR$/app/for_test" />
+            <option value="$PROJECT_DIR$/app/gugudan" />
+            <option value="$PROJECT_DIR$/app/gugudan_prj" />
+            <option value="$PROJECT_DIR$/app/imageview" />
+            <option value="$PROJECT_DIR$/app/linearlayout_test" />
+            <option value="$PROJECT_DIR$/app/relativelayout_test1" />
+            <option value="$PROJECT_DIR$/app/simple_bingo" />
+            <option value="$PROJECT_DIR$/app/t20210326" />
             <option value="$PROJECT_DIR$/app/view_test" />
+            <option value="$PROJECT_DIR$/app/viewtest2" />
+            <option value="$PROJECT_DIR$/simple_bingo" />
+            <option value="$PROJECT_DIR$/simple_gugudan" />
+            <option value="$PROJECT_DIR$/touch_event" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
