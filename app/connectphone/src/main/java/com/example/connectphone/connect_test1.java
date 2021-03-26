@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -83,6 +84,8 @@ public class connect_test1 extends AppCompatActivity{
 
         Button btn_remove = (Button)findViewById(R.id.btn_remove);
         btn_remove.setOnClickListener(removeLi);
+
+        lv.setOnItemLongClickListener(ls_long);
     }
 
     View.OnClickListener okLi =  new View.OnClickListener() {
@@ -114,6 +117,7 @@ public class connect_test1 extends AppCompatActivity{
         public void onClick(View v) {
             int index = -1;
             String str_remove = "";
+
             if(arrlist1.size() != 0){
                 index = arrlist1.size() - 1;
                 str_remove = arrlist1.get(index).toString();
@@ -123,6 +127,21 @@ public class connect_test1 extends AppCompatActivity{
             arradapter1.notifyDataSetChanged();
 
             Log.i("chiffon95", "onClick - remove : " + str_remove);
+        }
+    };
+
+    AdapterView.OnItemLongClickListener ls_long = new AdapterView.OnItemLongClickListener() {
+        @Override
+        public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            String str_remove = "";
+
+            str_remove = arrlist1.get(position).toString();
+            arrlist1.remove(position);
+            arradapter1.notifyDataSetChanged();
+
+            Log.i("chiffon95", "OnItemLongClickListener : " + str_remove);
+
+            return false;
         }
     };
 
