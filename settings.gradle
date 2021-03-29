@@ -1,3 +1,4 @@
+include ':app:study_adapterview'
 include ':app:myapplication'
 include ':app:arrayadapter_test'
 include ':app:test_adapterview'

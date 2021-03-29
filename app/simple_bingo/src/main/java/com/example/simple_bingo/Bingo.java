@@ -37,7 +37,6 @@ public class Bingo extends AppCompatActivity {
     public void onClick(View v) {
         ((TextView)v).setBackgroundColor(PINK);
         Log.i("chiffon95", "onClick : " + ((TextView)v).getText().toString());
-        arrBoolean[v.findViewById()];
     }
 
     public void btnFinish(View v){
