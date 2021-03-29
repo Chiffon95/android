@@ -12,10 +12,13 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/app/adapterview_study" />
+            <option value="$PROJECT_DIR$/app/adapterview_study2" />
             <option value="$PROJECT_DIR$/app/addarraylist_1" />
             <option value="$PROJECT_DIR$/app/array_adapter_n_listview" />
             <option value="$PROJECT_DIR$/app/connectphone" />
             <option value="$PROJECT_DIR$/app/edittext" />
+            <option value="$PROJECT_DIR$/app/for_ex" />
             <option value="$PROJECT_DIR$/app/for_test" />
             <option value="$PROJECT_DIR$/app/gugudan" />
             <option value="$PROJECT_DIR$/app/gugudan_prj" />
