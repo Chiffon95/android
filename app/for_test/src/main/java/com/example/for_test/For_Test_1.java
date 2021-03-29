@@ -81,3 +81,39 @@ public class For_Test_1 extends AppCompatActivity {
         });
     }
 }
+
+
+
+    ArrayList<String> info = new ArrayList<>();
+    ArrayAdapter at;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        at = new ArrayAdapter(this, android.R.layout.simple_list_item_1, info);
+        ListView lv = (ListView)findViewById(R.id.lv_Info);
+        lv.setAdapter(at);
+
+        Button btn_add = (Button)findViewById(R.id.btn_ok);
+        btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EditText et = (EditText)findViewById(R.id.et_Info);
+                if(et.getText().toString() != ""){
+                    info.add(et.getText().toString());
+                }
+                at.notifyDataSetChanged();
+
+                Log.i("chiffon95", "onClick : " + et.getText().toString());
+            }
+        });
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, info.get(position), Toast.LENGTH_LONG).show();
+            }
+        });
+    }

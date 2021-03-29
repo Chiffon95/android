@@ -8,9 +8,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -62,4 +67,36 @@ public class MainActivity extends AppCompatActivity {
             Log.i("chiffon95", "OnItemClick - Image : " + str_animals[position]);
         }
     };
+
+
+//    ArrayList<String> arrayList = new ArrayList<>();
+//    ArrayAdapter aa;
+//
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_main);
+//
+//        aa = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, arrayList);
+//        ListView lv = (ListView)findViewById(R.id.lv_Info);
+//        lv.setAdapter(aa);
+//
+//        Button btn = (Button)findViewById(R.id.btn_ok);
+//        btn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                EditText et = (EditText)findViewById(R.id.et_Info);
+//
+//                arrayList.add(et.getText().toString());
+//                aa.notifyDataSetChanged();
+//            }
+//        });
+//
+//        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Toast.makeText(MainActivity.this, arrayList.get(position), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//    }
 }

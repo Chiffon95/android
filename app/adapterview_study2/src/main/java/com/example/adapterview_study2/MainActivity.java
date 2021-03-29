@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
         aa = new MyAdapter(this, R.layout.layout_ex1, R.id.lv_name_n_email, al_UserInfo);
         Button button = (Button)findViewById(R.id.btn_submit);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".For_Test_1">
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,38 +14,32 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="2"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:layout_weight="3">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/et_Info"
+                android:hint="입력"/>
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="10sp"
                 android:layout_weight="1"
-                android:id="@+id/btn_txt_change"
-                android:text="Text\nChange\nButton"
-                android:textSize="24sp"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="10sp"
-                android:layout_weight="1"
-                android:id="@+id/btn_hide_tv"
-                android:text="TextView\nHide\nButton"
-                android:textSize="24sp"/>
+                android:id="@+id/btn_ok"
+                android:text="버튼"/>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:id="@+id/tv"
-                android:text="Hello World!"
-                android:textSize="40sp"/>
+            android:layout_weight="2">
+            <ListView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/lv_Info"/>
         </LinearLayout>
     </LinearLayout>
 
