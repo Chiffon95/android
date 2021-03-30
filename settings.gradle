@@ -1,3 +1,8 @@
+include ':app:for_play'
+include ':app:t20210330_3'
+include ':app:t20210330_2'
+include ':app:t20210330_1'
+include ':app:s20210330_2'
 include ':app:s20210330_1'
 include ':app:study_adapterview'
 include ':app:myapplication'

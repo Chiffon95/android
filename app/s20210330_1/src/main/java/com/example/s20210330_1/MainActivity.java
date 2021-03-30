@@ -6,8 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.View;
+
+import java.io.Serializable;
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -72,8 +76,36 @@ public class MainActivity extends AppCompatActivity {
         Log.i("chiffon95", "onDestroy");
     }
 
+    ArrayList<UserInfo> arrayList = new ArrayList();
     public void onClick(View view){
+
+        UserInfo userInfo = new UserInfo();
+
+        userInfo.name = "최현학";
+        userInfo.email = "a@naver.com";
+        userInfo.phone = "01023232323";
+        userInfo.address = "천안";
+        userInfo.user = "안녕하세요";
+
+        arrayList.add(userInfo);
+        arrayList.add(userInfo);
+
         Intent i = new Intent(MainActivity.this, SecondActivity.class);
+        i.putExtra("score", 90).putExtra("id", "최현학")
+        .putExtra("userInfo",arrayList);
         startActivity(i);
+    }
+}
+class UserInfo implements Serializable {
+    String name;
+    String email;
+    String phone;
+    String address;
+    String user;
+
+    @NonNull
+    @Override
+    public String toString() {
+        return name + ", " + email + ", " + phone + ", " + address + ", " + user;
     }
 }
