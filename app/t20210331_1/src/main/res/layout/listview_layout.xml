@@ -5,7 +5,8 @@
     android:orientation="horizontal">
 
     <ImageView
-        style="@style/image_size_48px"
+        android:layout_height="48px"
+        android:layout_width="48px"
         android:id="@+id/lv_image"
         android:src="@drawable/free_icon_portrait_565886"/>
     <TextView

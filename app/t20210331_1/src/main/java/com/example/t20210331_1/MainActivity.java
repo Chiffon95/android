@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        myAdapter = new MyAdapter(this, android.R.layout.simple_list_item_1, userInfoArrayList);
+        myAdapter = new MyAdapter(this, R.layout.listview_layout, userInfoArrayList);
         ListView listView = (ListView)findViewById(R.id.layout1_lv_user);
         listView.setAdapter(myAdapter);
 
@@ -118,8 +118,7 @@ class MyAdapter extends ArrayAdapter<UserInfo>{
         int rImageId = 0;
 
         if(view == null){
-//            view = inflater.inflate(R.layout.listview_layout, null);
-            view = super.getView(position, convertView, parent);
+            view = inflater.inflate(R.layout.listview_layout, null);
         }
 
         if(user.get(position).subject == R.drawable.free_icon_one_565860){

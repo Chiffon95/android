@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="당신의 스트레스 지수를 알아봅시다."/>
+        <Button
+            android:id="@+id/btn_test_start_activity1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="onClickStart"/>
+        <TextView
+            android:id="@+id/tv_result_activity1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="15dp"
+            android:textAppearance="?android:attr/textAppearance"
+            android:text="테스트를 마친 후 결과가 나타납니다."
+            android:gravity="center"
+            android:background="#f4e3a2"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
