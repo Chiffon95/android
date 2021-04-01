@@ -1,5 +1,6 @@
-package com.example.s20210401_thread_handler;
+package com.example.t20210401_thread_handler;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -18,14 +19,19 @@ public class MainActivity extends AppCompatActivity {
     TextView tv;
     Button btn;
     int count;
+    long color;
+    boolean bcontinue;
     Handler handler = new Handler(){
 
         @Override
         public void handleMessage(@NonNull Message msg) {
 
-            if(msg.what == WHAT_HANDLER_MSG_COUNT && msg.arg1 < 5){
+            if(msg.what == WHAT_HANDLER_MSG_COUNT && msg.arg1 < 10){
+                color = Color.argb((int)(Math.random() * 256), (int)(Math.random() * 256),
+                        (int)(Math.random() * 256), (int)(Math.random() * 256));
                 count++;
-                tv.setText(count + "초");
+                tv.setText(count + "초, 색상 : " + color);
+                tv.setBackgroundColor((int)color);
             }
         }
     };
@@ -39,14 +45,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void onClickStart(View v) {
+    public void onClickStart2(View v) {
+        bcontinue = true;
         count = 0;
 
         Thread th_count = new Thread(){
             @Override
             public void run() {
 
-                for(int i = 0; i < 5; i++){
+                for(int i = 0; i < 10; i++){
+
+                    if (!bcontinue) break; 
+
                     try {
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
@@ -54,17 +64,20 @@ public class MainActivity extends AppCompatActivity {
                     }
                     Message msg = handler.obtainMessage(WHAT_HANDLER_MSG_COUNT, count);
                     handler.sendMessage(msg);
-                    Log.i("chiffon95", " onClickStart Run count : " + count);
+                    Log.i("chiffon95", " onClickStart Run >>" +
+                            "color : " + color + ", count : " + count);
                 }
             }
         };
         th_count.start();
     }
 
-    public void onClickStop(View v) {
+    public void onClickStop2(View v) {
 
+        bcontinue = false;
         handler.removeMessages(WHAT_HANDLER_MSG_COUNT);
-        Toast.makeText(this, "onClickStop Count : " + (count + 1),
+        Toast.makeText(this, "onClickStop >>" +
+                        "Color : " + color + ", Count : " + (count + 1),
                 Toast.LENGTH_LONG).show();
     }
 }
