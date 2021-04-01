@@ -9,7 +9,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#EDE27C">
 
         <ListView
             android:id="@+id/lv_name_activity_1"
@@ -21,6 +22,7 @@
             android:layout_margin="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="#997BCD"
             android:text="New Address Add"/>
     </LinearLayout>
 

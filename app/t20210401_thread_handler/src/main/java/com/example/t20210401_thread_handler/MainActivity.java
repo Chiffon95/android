@@ -3,6 +3,7 @@ package com.example.t20210401_thread_handler;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     int count;
     long color;
     boolean bcontinue;
-    Handler handler = new Handler(){
+    Handler handler = new Handler(Looper.getMainLooper()){ //Looper.getMainLooper() 추가 할 것
 
         @Override
         public void handleMessage(@NonNull Message msg) {
@@ -55,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
 
                 for(int i = 0; i < 10; i++){
 
-                    if (!bcontinue) break; 
+                    if (!bcontinue) break;
 
                     try {
                         Thread.sleep(1000);
