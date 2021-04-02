@@ -1,3 +1,5 @@
+include ':app:t20210402_sharedpreference'
+include ':app:s20210402_sharedpreference'
 include ':app:t20210402_gugudantimer'
 include ':app:s20210402_countdowntimer'
 include ':app:t20210402_timertest'

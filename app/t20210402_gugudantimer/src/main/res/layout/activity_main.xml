@@ -55,12 +55,13 @@
                     android:textSize="20sp"
                     android:text="="/>
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="15sp"
                     android:layout_height="match_parent"
                     android:gravity="center"
                     android:layout_weight="3"
                     android:textSize="20sp"
-                    android:id="@+id/tv_answer"/>
+                    android:id="@+id/tv_answer"
+                    android:lines="1"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,7 +111,7 @@
                 <ProgressBar
                     android:id="@+id/pb_timer"
                     style="?android:attr/progressBarStyleHorizontal"
-                    android:max="60"
+                    android:max="600"
                     android:progress="0"
                     android:layout_marginRight="10sp"
                     android:layout_marginLeft="10sp"
@@ -132,7 +133,7 @@
                 android:layout_height="match_parent"
                 android:textSize="30sp"
                 android:onClick="onClickStart"
-                android:visibility="gone"
+                android:backgroundTint="#1799D5"
                 android:text="start"/>
 
             <TextView
@@ -140,6 +141,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
+                android:onClick="onClickReStart"
+                android:background="#1799D5"
+                android:textColor="@color/white"
+                android:visibility="gone"
                 android:textSize="30sp"/>
 
             <GridLayout

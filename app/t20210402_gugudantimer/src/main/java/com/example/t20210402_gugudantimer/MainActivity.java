@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -14,12 +13,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
-    FrameLayout frameLayout = (FrameLayout)findViewById(R.id.frameLayout);
-    Button btn_start = (Button)findViewById(R.id.btn_start);
-    GridLayout gridLayout = (GridLayout)findViewById(R.id.gridLayout_btns);
-    TextView tv_result = (TextView)findViewById(R.id.tv_end_result);
+    View btn_start, gridLayout, tv_result;
+    static final int WHAT_HANDLER_MSG_COUNT = 1;
+    TextView tv;
     ProgressBar pb;
-    Button btn;
     int cnt;
     int[] arrBtn = {R.id.btn_1, R.id.btn_2, R.id.btn_3,
             R.id.btn_4, R.id.btn_5, R.id.btn_6,
@@ -31,36 +28,44 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        pb = (ProgressBar)findViewById(R.id.pb_timer);
         btn_start = (Button)findViewById(R.id.btn_start);
-        btn_start.setVisibility(View.VISIBLE);
-        btn_start.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        gridLayout = (GridLayout)findViewById(R.id.gridLayout_btns);
+        tv_result = (TextView)findViewById(R.id.tv_end_result);
 
-            }
-        });
+        pb = (ProgressBar)findViewById(R.id.pb_timer);
+
     }
 
     public void onClickStart(View v){
         int max = pb.getMax();
-        btn_start.setVisibility(View.GONE);
-        btn_start.setClickable(false);
 
         question();
+        btn_start.setVisibility(View.GONE);
+        gridLayout.setVisibility(View.VISIBLE);
 
-        changeV
-        for(int i = 0; i < arrBtn.length; i++){
-           btn = (Button)findViewById(arrBtn[i]);
-           btn.setVisibility(View.VISIBLE);
-           btn.setEnabled(true);
+        for (int value : arrBtn) {
+            Button btn = (Button) findViewById(value);
+            btn.setVisibility(View.VISIBLE);
         }
+        new AccumulateTask().execute(max);
+
+        Log.i("chiffon95", "onClickStart");
     }
 
     public void onClickReStart(View v){
-        ((TextView)v).setVisibility(View.INVISIBLE);
+        tv = (TextView)findViewById(R.id.answer_cnt);
+        tv.setText("0");
+        tv = (TextView)findViewById(R.id.tv_question_left);
+        tv.setText("");
+        tv = (TextView)findViewById(R.id.tv_question_right);
+        tv.setText("");
+        tv = (TextView)findViewById(R.id.tv_result);
+        tv.setText("");
+
+        tv_result.setVisibility(View.GONE);
         btn_start.setVisibility(View.VISIBLE);
-        btn_start.setClickable(true);
+
+        Log.i("chiffon95", "onClickReStart");
     }
 
     void question(){
@@ -114,15 +119,19 @@ public class MainActivity extends AppCompatActivity {
             if (compareNum == resultNum){
                 cnt++;
                 ((TextView)findViewById(R.id.answer_cnt)).setText(cnt + "");
+                Log.i("chiffon95", "btnENT : " + resultNum + " , cnt : " + cnt);
+            }else{
+                Log.i("chiffon95", "btnENT : Wrong Answer" );
             }
         }
 
-        Log.i("chiffon95", "btnENT : " + resultNum + " , cnt : " + cnt);
+        question();
     }
 
-    class Accumulate extends AsyncTask<Integer, Integer, String>{
+    class AccumulateTask extends AsyncTask<Integer, Integer, String>{
 
-        static final String STR = "";
+        static final String STR = "Time Over!!! \n"
+                + "텍스트를 클릭하면 처음화면으로 돌아갑니다. \n";
         int progress = 0;
         @Override
         protected void onPreExecute() {
@@ -135,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 progress++;
                 publishProgress(progress);
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -152,14 +161,10 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String endStr) {
             TextView tv = (TextView)findViewById(R.id.tv_end_result);
 
-            for (int i = 0; i < arrBtn.length; i++){
-                btn = (Button)findViewById(arrBtn[i]);
-                btn.setVisibility(View.INVISIBLE);
-                btn.setClickable(false);
-            }
+            gridLayout.setVisibility(View.GONE);
+            tv_result.setVisibility(View.VISIBLE);
 
-            tv.setVisibility(View.VISIBLE);
-            tv.setText("1분간의 기록 : " + cnt + " 회");
+            tv.setText(endStr + "1분간의 기록 : " + cnt + " 회");
         }
     }
 }

@@ -7,7 +7,8 @@
         <item name="android:layout_rowWeight">1</item>
         <item name="android:layout_margin">5sp</item>
         <item name="android:gravity">center</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:visibility">gone</item>
         <item name="android:backgroundTint">#1799D5</item>
-        <item name="android:clickable">false</item>
     </style>
 </resources>
