@@ -2,6 +2,7 @@ package com.example.s20210401_thread_handler;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 import android.view.View;
@@ -17,15 +18,15 @@ public class MainActivity extends AppCompatActivity {
     static final int WHAT_HANDLER_MSG_COUNT = 1;
     TextView tv;
     Button btn;
-    int count;
-    Handler handler = new Handler(){
+    Handler handler = new Handler(Looper.getMainLooper()){
 
         @Override
         public void handleMessage(@NonNull Message msg) {
 
             if(msg.what == WHAT_HANDLER_MSG_COUNT && msg.arg1 < 5){
-                count++;
-                tv.setText(count + "초");
+                msg.arg1++;
+                tv = (TextView)findViewById(R.id.tv_text);
+                tv.setText(msg.arg1 + "초");
             }
         }
     };
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickStart(View v) {
-        count = 0;
+        int count = 0;
 
         Thread th_count = new Thread(){
             @Override
@@ -62,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onClickStop(View v) {
+        int count = 0;
 
         handler.removeMessages(WHAT_HANDLER_MSG_COUNT);
         Toast.makeText(this, "onClickStop Count : " + (count + 1),
