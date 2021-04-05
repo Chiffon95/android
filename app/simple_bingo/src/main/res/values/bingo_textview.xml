@@ -12,7 +12,4 @@
         <item name="android:textSize">30sp</item>
     </style>
 
-    <style name="onclick_style">
-        <item name="android:background">#B348DA</item>
-    </style>
 </resources>

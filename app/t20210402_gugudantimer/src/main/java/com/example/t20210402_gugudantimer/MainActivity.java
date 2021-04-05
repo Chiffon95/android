@@ -166,5 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
             tv.setText(endStr + "1분간의 기록 : " + cnt + " 회");
         }
+
+
     }
 }
