@@ -1,13 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="button_style_1">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_columnWeight">1</item>
-        <item name="android:layout_rowWeight">1</item>
-        <item name="android:layout_margin">5sp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:backgroundTint">#1799D5</item>
-        <item name="android:textSize">30sp</item>
-    </style>
-</resources>
+<resources></resources>
