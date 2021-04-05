@@ -1,3 +1,5 @@
+include ':app:t20210404_for_search'
+include ':app:s20210404_study_for_test'
 include ':app:t20210402_sharedpreference'
 include ':app:s20210402_sharedpreference'
 include ':app:t20210402_gugudantimer'

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="menu_button_style">
+        <item name="android:layout_margin">5sp</item>
+        <item name="backgroundTint">#E15252</item>
+    </style>
+</resources>
