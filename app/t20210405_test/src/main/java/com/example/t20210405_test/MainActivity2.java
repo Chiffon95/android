@@ -3,6 +3,7 @@ package com.example.t20210405_test;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +23,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
+import static com.example.t20210405_test.MainActivity4.PREF_FILE_NAME;
+import static com.example.t20210405_test.MainActivity4.PREF_NAME;
 
 class UserInfo implements Serializable {
     static final String date = "2020년 4월 5일";
@@ -56,31 +61,37 @@ public class MainActivity2 extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity2.this);
-                builder.setTitle("비밀 번호 입력").setMessage("관리자 비밀번호를 입력하세요.");
-
                 EditText et_admin = new EditText(MainActivity2.this);
+                builder.setTitle("비밀 번호 입력").setMessage("관리자 비밀번호를 입력하세요.")
+                .setView(et_admin);
+
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        
-                    }
-                });
+                        SharedPreferences pref = getSharedPreferences(PREF_FILE_NAME, MODE_PRIVATE);
+                        String str = pref.getString(PREF_NAME, "0000");
+                        if (str.equals(et_admin.getText().toString().trim())) {
+                            Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
+                            intent.putExtra(UserCode.ADMIN_DIAL, userInfoArr.get(position));
 
-                builder.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(MainActivity2.this, "비밀번호가 다릅니다.",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }).setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        Toast.makeText(MainActivity2.this, "취소하였습니다.",
+                                Toast.LENGTH_SHORT).show();
                     }
                 });
 
                 AlertDialog alertDialog = builder.create();
                 alertDialog.show();
 
-                Intent intent = new Intent(MainActivity2.this, MainActivity5.class);
-                intent.putExtra(UserCode.ADMIN_DIAL, userInfoArr.get(position));
-
-                startActivity(intent);
             }
         });
     }
@@ -139,11 +150,13 @@ class MyAdapter extends ArrayAdapter{
         tv_date.setText(al.get(position).date);
         tv_time.setText(al.get(position).time);
         String str = al.get(position).name;
-        int len = str.length();
-        char name[] = new char[len];
+        char name[] = str.toCharArray();
 
-        for (int i = 0; i < len; i ++){
-            if(i == 0 || i == len - 1){ name[i] = 'O'; }
+        for (int i = 0; i < str.length(); i ++){
+            if(str.length() == 2){
+
+            }
+            if(i != 0 && i != str.length() - 1){ name[i] = 'O'; }
         }
 
         str = String.valueOf(name);

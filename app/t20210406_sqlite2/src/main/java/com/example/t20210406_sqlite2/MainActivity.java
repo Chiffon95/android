@@ -91,16 +91,17 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, MainActivity3.class);
 
                 cursor.moveToPosition(position);
+                int id = cursor.getInt(0);
                 String cou = cursor.getString(1);
                 String cap = cursor.getString(2);
-                intent.putExtra("position",position).putExtra("country",cou)
+                intent.putExtra("id",id).putExtra("country",cou)
                         .putExtra("capital",cap);
                 startActivityForResult(intent,RQCODE_UPDATE);
                 break;
             case MENU_DELETE:
                 cursor.moveToPosition(position);
-                int id = cursor.getInt(0);
-                sqlDB.execSQL("DELETE FROM world WHERE _id ="+ id +";");
+                int id1 = cursor.getInt(0);
+                sqlDB.execSQL("DELETE FROM world WHERE _id ="+ id1 +";");
 
                 break;
         }
@@ -120,17 +121,15 @@ public class MainActivity extends AppCompatActivity {
                     sqlDB.execSQL("INSERT INTO world VALUES (null, '"+ strCou +"','"+ strCap +"');");
                     cursorAdapter.notifyDataSetChanged();
 
-                    cursor.requery();
                     break;
                 case RQCODE_UPDATE:
                     String strCou2 = data.getStringExtra("country");
                     String strCap2 = data.getStringExtra("capital");
-                    int position = data.getIntExtra("position", -1);
-                    cursor.moveToPosition(position);
+                    int id = data.getIntExtra("id", -1);
                     sqlDB.execSQL("UPDATE world SET country = '" + strCou2 + "'," +
-                            "capital = '"+ strCap2 + "' WHERE _id=" + (position + 1));
-                    cursor.requery();
+                            "capital = '"+ strCap2 + "' WHERE _id=" + id);
             }
+            cursor.requery();
         }
     }
 }

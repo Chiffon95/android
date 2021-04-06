@@ -16,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar pb_main;
     ImageView iv_logo;
     Button btn_admin;
+    boolean acstop;
+    int progress;
+    int proStop;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +28,26 @@ public class MainActivity extends AppCompatActivity {
         pb_main = (ProgressBar)findViewById(R.id.act1_pb);
         iv_logo = (ImageView)findViewById(R.id.act1_iv_logo);
         btn_admin = (Button)findViewById(R.id.act1_btn_admin);
+        progress = 0;
 
         int max = pb_main.getMax();
         new AccumulateTask().execute(max);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        acstop = false;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        acstop = true;
+    }
+
     public void onClickAdmin(View view){
+        onPause();
         Intent intent = new Intent(MainActivity.this, MainActivity4.class);
         startActivity(intent);
     }
@@ -38,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
     class AccumulateTask extends AsyncTask<Integer, Integer, String>{
 
         static final String str = "로딩이 완료되었습니다!";
-        int progress = 0;
 
         @Override
         protected void onPreExecute() { progress = 0; }
@@ -46,7 +62,11 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected String doInBackground(Integer... integers) {
             while (progress < integers[0]){
-                progress++;
+                if(!acstop){
+                    progress += 0;
+                }else{
+                    progress++;
+                }
                 publishProgress(progress);
                 try {
                     Thread.sleep(200);
@@ -71,5 +91,6 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(MainActivity.this, MainActivity2.class);
             startActivity(intent);
         }
+
     }
 }

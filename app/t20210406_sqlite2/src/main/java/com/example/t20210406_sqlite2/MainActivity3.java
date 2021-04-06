@@ -15,7 +15,7 @@ public class MainActivity3 extends AppCompatActivity {
     EditText et_cap;
     Button btn_ok;
     Button btn_cancel;
-    int position;
+    int id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +23,7 @@ public class MainActivity3 extends AppCompatActivity {
         setContentView(R.layout.activity_main3);
 
         intent = getIntent();
-        position = intent.getIntExtra("position", -1);
+        id = intent.getIntExtra("id", -1);
         String strCou = intent.getStringExtra("country");
         String strCap = intent.getStringExtra("capital");
 
@@ -39,7 +39,7 @@ public class MainActivity3 extends AppCompatActivity {
         Intent intent1 = new Intent();
         intent1.putExtra("country", et_cou.getText().toString().trim())
                 .putExtra("capital", et_cap.getText().toString().trim())
-                .putExtra("position",position);
+                .putExtra("id",id);
         setResult(RESULT_OK,intent1);
 
         finish();
