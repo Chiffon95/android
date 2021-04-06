@@ -1,3 +1,5 @@
+include ':app:t20210406_sqlite2'
+include ':app:s20210406_sqlite2'
 include ':app:s20210406_cursoradapter'
 include ':app:t20210406_sqlite'
 include ':app:s20210406_sqlite'
