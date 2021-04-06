@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity {
     public void onClickAdd(View view){
 
     }
-    public void onClick
+    public void onClickRead(View view){
+
+    }
 }
 
 class MyHepler extends SQLiteOpenHelper{
