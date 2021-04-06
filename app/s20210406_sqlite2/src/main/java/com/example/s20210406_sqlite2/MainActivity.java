@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-e
+
         menu.add(Menu.NONE, MENU_DELETE, Menu.NONE, "delete");
         menu.add(Menu.NONE, MENU_UPDATE, Menu.NONE, "update");
         super.onCreateContextMenu(menu, v, menuInfo);
